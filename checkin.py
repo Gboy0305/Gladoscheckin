@@ -75,12 +75,14 @@ if __name__ == '__main__':
                 # 解析返回的json数据
                 check_result = checkin.json().get('message', '')
                 points = checkin.json().get('points', 0)
+                print(f"Check-in Response: {checkin.json()}")
 
                 if state.status_code == 200:
                     result = state.json()
                     leftdays = int(float(result.get('data', {}).get('leftDays', 0)))
                     email = result.get('data', {}).get('email', '')
-                    
+                    print(f"Status Response: {result}")
+
                     if "Checkin! Got" in check_result:
                         success += 1
                         message_status = "签到成功，会员点数 + " + str(points)
