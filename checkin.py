@@ -3,9 +3,15 @@ import json
 import os
 from pypushdeer import PushDeer
 
-# -------------------------------------------------------------------------------------------
-# github workflows
-# -------------------------------------------------------------------------------------------
+# 定义一个函数来清理请求头中的值
+def clean_header_value(value):
+    if value is None:
+        return ""
+    value = value.strip()
+    value = value.replace('\n', '').replace('\r', '').replace('\t', '')
+    return value
+
+# 主程序
 if __name__ == '__main__':
     # pushdeer key 申请地址 https://www.pushdeer.com/product.html
     sckey = os.environ.get("SENDKEY", "")
@@ -30,6 +36,12 @@ if __name__ == '__main__':
         }
 
         for cookie in cookies:
+            # 清理请求头中的值
+            cookie = clean_header_value(cookie)
+            referer = clean_header_value(referer)
+            origin = clean_header_value(origin)
+            useragent = clean_header_value(useragent)
+
             # 发送签到请求
             checkin = requests.post(
                 check_in_url,
