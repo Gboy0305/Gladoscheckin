@@ -45,7 +45,7 @@ jobs:
         COOKIES: ${{ secrets.COOKIES }}
 
     - name: keep alive
-      uses: timbru31/github-action-repo-keep-alive@v1
+      uses: liskin/gh-workflow-keepalive@v1
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@v2
       with:
