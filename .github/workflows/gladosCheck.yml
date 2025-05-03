@@ -45,7 +45,7 @@ jobs:
         COOKIES: ${{ secrets.COOKIES }}
 
     - name: keep alive
-      uses: gautamkrishnar/keepalive-workflow@v2 # using the workflow with default settings
+      uses: timbru31/github-action-repo-keep-alive@v1
     - name: Delete workflow runs
       uses: Mattraks/delete-workflow-runs@v2
       with:
